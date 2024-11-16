@@ -33,8 +33,15 @@
     </h2>
     <p>
       <span id="years-old"><small>включи жс</small></span>
-      <script>document.getElementById('years-old').textContent = new Date().getFullYear() - 2003 - (new Date() < new Date(new Date().getFullYear(), 9, 24) ? 1 : 0)</script>
-      лет живу в России, ИТ-разнорабочий. В основном занимаюсь <del>вебнёй и прочей
+      <script>
+        const yearsOld = new Date().getFullYear() - 2003 - (new Date() < new Date(new Date().getFullYear(), 9, 24) ? 1 : 0)
+        const lastDigit = yearsOld.toString().slice(-1)
+        let yearForm = 'лет'
+        if (lastDigit === '1') yearForm = 'год'
+        else if (['2', '3', '4'].contains(lastDigit)) yearForm = 'года'
+        document.getElementById('years-old').textContent = `${yearsOld} ${yearForm}`
+      </script>
+      живу в России, ИТ-разнорабочий. В основном занимаюсь <del>вебнёй и прочей
         скриптухой</del> вебом, Python, аналитикой на SQL, по большей части факультативно C/C++.
     </p>
     <p>
